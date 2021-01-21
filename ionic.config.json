@@ -1,0 +1,7 @@
+{
+  "name": "app-detran-sp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
