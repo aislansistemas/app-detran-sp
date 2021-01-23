@@ -1,0 +1,26 @@
+<ion-app>
+  <ion-header style="height: 8%; font-weight: 600;">
+    <ion-row style="background-color: #3A5FCD; height: 100%; color:white; display: flex; align-items: center;">
+      <ion-col style="padding-left: 3%;">
+        Tutorial
+      </ion-col>
+      <ion-col style="text-align: end; padding-right: 3%; font-size: 0.8em;" [routerLink]="['/principal']">
+        Pular
+      </ion-col>
+    </ion-row>
+  </ion-header>
+
+  <ion-content>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <ion-img style="padding-top: 0px;" src="../assets/foto_slide2.jpg"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img style="padding-top: 0px;" src="../assets/foto_slide3.jpg"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img style="padding-top: 0px;" src="../assets/foto_slide4.jpg"></ion-img>
+      </ion-slide>
+    </ion-slides>
+  </ion-content>
+</ion-app>

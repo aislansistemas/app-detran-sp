@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  slideOpts = {
-    initialSlide: 1,
-    speed: 400
-  };
-  
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(this.redirecionar, 3500);
+  }
+
+  redirecionar() {
+    window.location.href = "/tutorial";
+  }
 
 }
