@@ -1,0 +1,68 @@
+<ion-app>
+  <ion-header style="height: 8%; font-weight: 600;">
+    <ion-row style="background-color: #3A5FCD; height: 100%; color:white; display: flex; align-items: center;">
+      <ion-col size="1" style="padding-left: 3%;" [routerLink]="['/principal']">
+        <ion-icon style="font-size: 1.2em;" name="arrow-back-sharp"></ion-icon>
+      </ion-col>
+      <ion-col size="11" style="text-align: center; font-size: 1em;">
+        Autenticidade da CNH
+      </ion-col>
+    </ion-row>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <p style="font-size: 0.8em;">
+      Preencha os dados abaixo para confirmar a autenticidade da Carteira
+      Nacional de Habilitação - CNH (se ela apresenta os mesmos dados que
+      constam na base do Detran.SP).
+    </p>
+    
+    <p style="font-size: 0.8em;">
+      Serviço válido apenas para as CNHs emitidas pelo Detran.SP,
+       e sempre será validada a útima emissão do documento.
+    </p>
+
+    <p style="font-size: 0.8em; color: #dedede;">
+      *Limite diário de 5 consultas
+    </p>
+
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">CPF*</ion-label>
+        <ion-input [(ngModel)]="cpf"></ion-input>
+      </ion-item>
+      <small style="color: red; padding-left: 5%">{{ cpf }}</small>
+      
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">Documento de identificação*</ion-label>
+        <ion-input [(ngModel)]="identificacao"></ion-input>
+      </ion-item>
+      <small *ngIf="identificacao != null" style="color: red; padding-left: 5%">{{ identificacao }}</small>
+      
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">Data de nascimento*</ion-label>
+        <ion-input [(ngModel)]="dataNascimento"></ion-input>
+      </ion-item>
+      <small *ngIf="dataNascimento != null" style="color: red; padding-left: 5%">{{ dataNascimento }}</small>
+
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">Nº de registro da CNH*</ion-label>
+        <ion-input [(ngModel)]="numeroRegistroCnh"></ion-input>
+      </ion-item>
+      <small *ngIf="numeroRegistroCnh != null" style="color: red; padding-left: 5%">{{ numeroRegistroCnh }}</small>
+
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">Renach*</ion-label>
+        <ion-input [(ngModel)]="renach"></ion-input>
+      </ion-item>
+      <small *ngIf="renach != null" style="color: red; padding-left: 5%">{{ renach }}</small>
+
+      <ion-item>
+        <ion-label style="color: #BEBEBE;" position="floating">Nº do espelho da CNH*</ion-label>
+        <ion-input [(ngModel)]="numeroEspelhoCnh"></ion-input>
+      </ion-item>
+      <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 5%">{{ numeroEspelhoCnh }}</small>
+      <br>
+      <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">CONSULTAR</ion-button>
+
+  </ion-content>
+</ion-app>

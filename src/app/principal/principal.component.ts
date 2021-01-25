@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MenuController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-principal',
@@ -7,10 +10,16 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./principal.component.scss'],
 })
 export class PrincipalComponent implements OnInit {
+  public folder: string;
+  constructor(
+    private menu: MenuController,
+    private activatedRoute: ActivatedRoute,
+  ) { 
+  }
 
-  constructor(private menu: MenuController) { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+  }
 
   openFirst() {
     this.menu.enable(true, 'main-menu');

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AutenticidadeCnhComponent } from './autenticidade-cnh/autenticidade-cnh.component';
+import { AutenticidadeCnhModule } from './autenticidade-cnh/autenticidade-cnh.module';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { PrincipalComponent } from './principal/principal.component';
@@ -19,6 +21,10 @@ const routes: Routes = [
   {
     path: 'principal',
     component: PrincipalComponent
+  },
+  {
+    path: 'autenticidade-cnh',
+    component: AutenticidadeCnhComponent
   }
 ];
 @NgModule({
@@ -26,7 +32,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     HomeModule,
     TutorialModule,
-    PrincipalModule
+    PrincipalModule,
+    AutenticidadeCnhModule
   ],
   exports: [RouterModule]
 })

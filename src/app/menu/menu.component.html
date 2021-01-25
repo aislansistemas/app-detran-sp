@@ -1,27 +1,29 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note>
 
-  <ion-header style="height: 8%; font-weight: 600;">
-    <ion-toolbar>
-      <ion-title>teste</ion-title>
-      <ion-buttons slot="start">
-        <ion-menu-button menu="main-menu" (click)="openFirst()"></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detail="false">
+              <ion-icon slot="start"></ion-icon>
+              <ion-label>Menu</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
 
-  <ion-menu menuId="main-menu" contentId="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item name="email">Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+        <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item>
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>Menu</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
