@@ -25,43 +25,43 @@
     <p style="font-size: 0.8em; color: #dedede;">
       *Limite diário de 5 consultas
     </p>
-
+    
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">CPF*</ion-label>
         <ion-input [(ngModel)]="cpf"></ion-input>
       </ion-item>
-      <small style="color: red; padding-left: 5%">{{ cpf }}</small>
+      <small style="color: red; padding-left: 7%">{{ errorValidationCpf }}</small>
       
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Documento de identificação*</ion-label>
         <ion-input [(ngModel)]="identificacao"></ion-input>
       </ion-item>
-      <small *ngIf="identificacao != null" style="color: red; padding-left: 5%">{{ identificacao }}</small>
+      <small *ngIf="identificacao != null" style="color: red; padding-left: 7%">{{ errorValidationIdentificacao }}</small>
       
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Data de nascimento*</ion-label>
         <ion-input [(ngModel)]="dataNascimento"></ion-input>
       </ion-item>
-      <small *ngIf="dataNascimento != null" style="color: red; padding-left: 5%">{{ dataNascimento }}</small>
+      <small *ngIf="dataNascimento != null" style="color: red; padding-left: 7%">{{ errorValidationDataNascimento }}</small>
 
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Nº de registro da CNH*</ion-label>
         <ion-input [(ngModel)]="numeroRegistroCnh"></ion-input>
       </ion-item>
-      <small *ngIf="numeroRegistroCnh != null" style="color: red; padding-left: 5%">{{ numeroRegistroCnh }}</small>
+      <small *ngIf="numeroRegistroCnh != null" style="color: red; padding-left: 7%">{{ errorValidationNumeroRegistroCnh }}</small>
 
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Renach*</ion-label>
         <ion-input [(ngModel)]="renach"></ion-input>
       </ion-item>
-      <small *ngIf="renach != null" style="color: red; padding-left: 5%">{{ renach }}</small>
+      <small *ngIf="renach != null" style="color: red; padding-left: 7%">{{ errorValidationRenach }}</small>
 
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Nº do espelho da CNH*</ion-label>
         <ion-input [(ngModel)]="numeroEspelhoCnh"></ion-input>
       </ion-item>
-      <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 5%">{{ numeroEspelhoCnh }}</small>
-      <br>
+      <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 7%">{{ errorValidationNumeroEspelhoCnh }}</small>
+      <br><br>
       <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">CONSULTAR</ion-button>
 
   </ion-content>

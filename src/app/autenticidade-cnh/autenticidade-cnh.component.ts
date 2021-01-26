@@ -15,6 +15,14 @@ export class AutenticidadeCnhComponent implements OnInit {
   numeroRegistroCnh: string = "";
   renach: string = "";
   numeroEspelhoCnh: string = "";
+
+  errorValidationCpf = "";
+  errorValidationIdentificacao = "";
+  errorValidationDataNascimento = "";
+  errorValidationNumeroRegistroCnh = "";
+  errorValidationRenach = "";
+  errorValidationNumeroEspelhoCnh = "";
+
   
   constructor(
     private formBuilder: FormBuilder,
@@ -23,25 +31,40 @@ export class AutenticidadeCnhComponent implements OnInit {
 
   ngOnInit() {}
 
-  consultarAutenticidade() {
-    if(this.cpf == null) {
-      this.cpf = "Informe o CPF!";
+  consultarAutenticidade():void {
+    if(this.validarFormulario()) {
+      alert("ok");
     }
-    if(this.identificacao == null) {
-      this.identificacao = "Informe o numero do documento!";
+  }
+
+  validarFormulario() {
+    var erros = 0;
+    if(this.cpf == "") {
+      this.errorValidationCpf = "Informe o CPF!";
+      erros++;
     }
-    if(this.dataNascimento == null) {
-      this.dataNascimento = "Informe a data de nascimento!";
+    if(this.identificacao == "") {
+      this.errorValidationIdentificacao = "Informe o numero do documento!";
+      erros++;
     }
-    if(this.numeroRegistroCnh == null) {
-      this.numeroRegistroCnh = "Informe o numero do registro da CNH!";
+    if(this.dataNascimento == "") {
+      this.errorValidationDataNascimento = "Informe a data de nascimento!";
+      erros++;
     }
-    if(this.renach == null) {
-      this.renach = "Informe o numero do renach!";
+    if(this.numeroRegistroCnh == "") {
+      this.errorValidationNumeroRegistroCnh = "Informe o numero do registro da CNH!";
+      erros++;
     }
-    if(this.numeroEspelhoCnh == null) {
-      this.numeroEspelhoCnh = "Informe o numero do espelho da CNH!";
+    if(this.renach == "") {
+      this.errorValidationRenach = "Informe o numero do renach!";
+      erros++;
     }
+    if(this.numeroEspelhoCnh == "") {
+      this.errorValidationNumeroEspelhoCnh = "Informe o numero do espelho da CNH!";
+      erros++;
+    }
+
+    return erros == 0 ? true : false;
   }
 
 }
