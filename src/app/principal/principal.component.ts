@@ -21,6 +21,10 @@ export class PrincipalComponent implements OnInit {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
+  async openMenu() {
+    await this.menu.open();
+  }
+  
   openFirst() {
     this.menu.enable(true, 'main-menu');
     this.menu.open('main-menu');

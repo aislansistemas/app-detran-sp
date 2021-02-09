@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
   selector: 'app-autenticidade-cnh',
@@ -26,14 +27,22 @@ export class AutenticidadeCnhComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private apiService: ApiServiceService
   ) { }
 
   ngOnInit() {}
 
   consultarAutenticidade():void {
     if(this.validarFormulario()) {
-      alert("ok");
+      this.apiService.consultarAutenticidadeCnh(this.cpf).subscribe(
+        dados => {
+          console.log(dados);
+        },
+        error =>{
+          console.log(error);
+        }
+      );
     }
   }
 
