@@ -11,24 +11,25 @@
   </ion-header>
 
   <ion-content class="ion-padding">
-    <p style="font-size: 0.8em;">
-      Preencha os dados abaixo para confirmar a autenticidade da Carteira
-      Nacional de Habilitação - CNH (se ela apresenta os mesmos dados que
-      constam na base do Detran.SP).
-    </p>
-    
-    <p style="font-size: 0.8em;">
-      Serviço válido apenas para as CNHs emitidas pelo Detran.SP,
-       e sempre será validada a útima emissão do documento.
-    </p>
+    <div *ngIf="!hasClienteResponse">
+      <p style="font-size: 0.8em;">
+        Preencha os dados abaixo para confirmar a autenticidade da Carteira
+        Nacional de Habilitação - CNH (se ela apresenta os mesmos dados que
+        constam na base do Detran.SP).
+      </p>
+      
+      <p style="font-size: 0.8em;">
+        Serviço válido apenas para as CNHs emitidas pelo Detran.SP,
+        e sempre será validada a útima emissão do documento.
+      </p>
 
-    <p style="font-size: 0.8em; color: #dedede;">
-      *Limite diário de 5 consultas
-    </p>
+      <p style="font-size: 0.8em; color: #dedede;">
+        *Limite diário de 5 consultas
+      </p>
     
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">CPF*</ion-label>
-        <ion-input [(ngModel)]="cpf"></ion-input>
+        <ion-input [(ngModel)]="cpf" [brmasker]="{mask:'000.000.000-00', len:14, userCaracters: true}"></ion-input>
       </ion-item>
       <small style="color: red; padding-left: 7%">{{ errorValidationCpf }}</small>
       
@@ -63,6 +64,42 @@
       <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 7%">{{ errorValidationNumeroEspelhoCnh }}</small>
       <br><br>
       <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">CONSULTAR</ion-button>
+    </div>
+
+    <!----resultado de consulta---->
+    <div *ngIf="hasClienteResponse">
+      <ion-row style="font-size: 0.8em;">
+        <ion-col size="12" style="padding: 0px 2% 2% 2%;">
+          <ion-img style="height: 80px; width: 100%;" src="../assets/icone_agenda_carro.jpg"></ion-img>
+        </ion-col>
+        <ion-col size="11" style="padding: 5% 3% 3% 3%;">
+          <span style="font-weight: 700;">CPF:</span> {{cliente.cpf}}
+        </ion-col>
+        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+          <span style="font-weight: 700;">RG:</span> {{cliente.rg}}
+        </ion-col>
+        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+          <span style="font-weight: 700;">Data de nascimento:</span> {{cliente.dataNascimento | date: 'dd/MM/yyyy'}}
+        </ion-col>
+        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+          <span style="font-weight: 700;">Nº do espelho da CNH:</span> {{cliente.espelhoCnh}}
+        </ion-col>
+        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+          <span style="font-weight: 700;">Data de emissão:</span> {{cliente.dataAutorizacaoEmissao | date: 'dd/MM/yyyy'}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" style="padding: 8% 2% 2% 8%;">
+          <p style="font-weight: 700; color: #00EE00">
+            CNH verdadeira! Dados informados são os mesmos que constam
+            na base do Dentra.SP
+          </p>
+        </ion-col>
+      </ion-row>
+
+    </div>
+   <!---- resultado de consulta---->
 
   </ion-content>
 </ion-app>

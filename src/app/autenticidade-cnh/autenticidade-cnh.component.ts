@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { Cliente } from '../Models/Cliente';
 import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class AutenticidadeCnhComponent implements OnInit {
 
+  cliente: Cliente = new Cliente();
   cpf: string = "";
   identificacao: string = "";
   dataNascimento: string = "";
@@ -23,12 +26,14 @@ export class AutenticidadeCnhComponent implements OnInit {
   errorValidationNumeroRegistroCnh = "";
   errorValidationRenach = "";
   errorValidationNumeroEspelhoCnh = "";
+  hasClienteResponse: boolean = false;
 
   
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private apiService: ApiServiceService
+    private apiService: ApiServiceService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {}
@@ -37,13 +42,24 @@ export class AutenticidadeCnhComponent implements OnInit {
     if(this.validarFormulario()) {
       this.apiService.consultarAutenticidadeCnh(this.cpf).subscribe(
         dados => {
-          console.log(dados);
+            this.cliente = dados;
+            this.hasClienteResponse = true;
         },
         error =>{
-          console.log(error);
+          this.presentAlert(error.error);
         }
       );
     }
+  }
+
+  async presentAlert(mensagem: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: mensagem,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   validarFormulario() {

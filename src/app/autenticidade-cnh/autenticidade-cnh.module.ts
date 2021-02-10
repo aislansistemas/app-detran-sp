@@ -4,6 +4,7 @@ import { AutenticidadeCnhComponent } from './autenticidade-cnh.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { BrMaskerModule } from 'br-mask';
 
 
 
@@ -14,7 +15,8 @@ import { IonicModule } from '@ionic/angular';
     RouterModule,
     FormsModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrMaskerModule
   ],
   exports: [AutenticidadeCnhComponent]
 })
