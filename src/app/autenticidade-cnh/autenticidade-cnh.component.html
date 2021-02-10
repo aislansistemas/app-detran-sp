@@ -10,7 +10,7 @@
     </ion-row>
   </ion-header>
 
-  <ion-content class="ion-padding">
+  <ion-content class="ion-padding" style="font-family: Arial, Helvetica, sans-serif;">
     <div *ngIf="!hasClienteResponse">
       <p style="font-size: 0.8em;">
         Preencha os dados abaixo para confirmar a autenticidade da Carteira
@@ -41,7 +41,7 @@
       
       <ion-item>
         <ion-label style="color: #BEBEBE;" position="floating">Data de nascimento*</ion-label>
-        <ion-input [(ngModel)]="dataNascimento"></ion-input>
+        <ion-input [(ngModel)]="dataNascimento" [brmasker]="{mask:'00/00/0000', len:10, userCaracters: false}"></ion-input>
       </ion-item>
       <small *ngIf="dataNascimento != null" style="color: red; padding-left: 7%">{{ errorValidationDataNascimento }}</small>
 
@@ -63,37 +63,51 @@
       </ion-item>
       <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 7%">{{ errorValidationNumeroEspelhoCnh }}</small>
       <br><br>
-      <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">CONSULTAR</ion-button>
+      <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">
+        CONSULTAR
+        <ion-spinner *ngIf="isExecutarSpinner" name="bubbles"></ion-spinner>
+      </ion-button>
     </div>
 
     <!----resultado de consulta---->
     <div *ngIf="hasClienteResponse">
-      <ion-row style="font-size: 0.8em;">
+      <ion-row style="font-size: 1em;">
         <ion-col size="12" style="padding: 0px 2% 2% 2%;">
-          <ion-img style="height: 80px; width: 100%;" src="../assets/icone_agenda_carro.jpg"></ion-img>
+          <ion-img style="height: 100px; width: 80%;" src="{{fotoPerfilCliente}}"></ion-img>
         </ion-col>
-        <ion-col size="11" style="padding: 5% 3% 3% 3%;">
+        <ion-col size="11">
           <span style="font-weight: 700;">CPF:</span> {{cliente.cpf}}
         </ion-col>
-        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+        <ion-col size="11">
           <span style="font-weight: 700;">RG:</span> {{cliente.rg}}
         </ion-col>
-        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+        <ion-col size="11">
           <span style="font-weight: 700;">Data de nascimento:</span> {{cliente.dataNascimento | date: 'dd/MM/yyyy'}}
         </ion-col>
-        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+        <ion-col size="11">
           <span style="font-weight: 700;">Nº do espelho da CNH:</span> {{cliente.espelhoCnh}}
         </ion-col>
-        <ion-col size="11" style="padding: 0% 3% 3% 3%;">
+        <ion-col size="11">
           <span style="font-weight: 700;">Data de emissão:</span> {{cliente.dataAutorizacaoEmissao | date: 'dd/MM/yyyy'}}
         </ion-col>
       </ion-row>
 
       <ion-row>
-        <ion-col size="12" style="padding: 8% 2% 2% 8%;">
-          <p style="font-weight: 700; color: #00EE00">
+        <ion-col size="12" style="padding-top: 5px">
+          <p style="font-weight: 700; color: #00CD00">
             CNH verdadeira! Dados informados são os mesmos que constam
             na base do Dentra.SP
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" style="padding-top: 5px">
+          <p style="font-size: 0.8em">
+            <b>Observação: </b>
+            A foto apresentada é a mesma impressa na habilitação ou é uma foto mais recente, caso
+            o cidadão ja tenha coletado uma nova foto no Detran.SP, para um novo serviço. Exemplo: ele
+            pode ter iniciado um processo de edição ou mudança de carteira, após a emissão da CNH acima.
           </p>
         </ion-col>
       </ion-row>

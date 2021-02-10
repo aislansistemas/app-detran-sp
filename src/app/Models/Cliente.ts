@@ -1,3 +1,5 @@
+import { ImagemCliente } from "./ImagemCliente";
+
 export class Cliente {
     id: number;
     cpf: string;
@@ -7,4 +9,5 @@ export class Cliente {
     dataAutorizacaoEmissao: Date;
     fotoPerfil: string;
     clienteEstado: number;
+    imagemCliente: ImagemCliente = new ImagemCliente();
 }

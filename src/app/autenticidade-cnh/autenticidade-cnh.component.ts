@@ -11,8 +11,9 @@ import { ApiServiceService } from '../services/api-service.service';
   styleUrls: ['./autenticidade-cnh.component.scss'],
 })
 export class AutenticidadeCnhComponent implements OnInit {
-
+  
   cliente: Cliente = new Cliente();
+  fotoPerfilCliente = "https://detran-system.herokuapp.com/imagem-clientes/SP/" + this.cliente.imagemCliente.fotoPerfil;
   cpf: string = "";
   identificacao: string = "";
   dataNascimento: string = "";
@@ -27,8 +28,8 @@ export class AutenticidadeCnhComponent implements OnInit {
   errorValidationRenach = "";
   errorValidationNumeroEspelhoCnh = "";
   hasClienteResponse: boolean = false;
+  isExecutarSpinner: boolean = false;
 
-  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -39,16 +40,21 @@ export class AutenticidadeCnhComponent implements OnInit {
   ngOnInit() {}
 
   consultarAutenticidade():void {
+    this.executarSpinner(true);
     if(this.validarFormulario()) {
       this.apiService.consultarAutenticidadeCnh(this.cpf).subscribe(
         dados => {
             this.cliente = dados;
             this.hasClienteResponse = true;
+            console.log(this.cliente.imagemCliente.fotoPerfil);
         },
         error =>{
+          this.executarSpinner(false);
           this.presentAlert(error.error);
         }
       );
+    } else {
+      this.executarSpinner(false);
     }
   }
 
@@ -90,6 +96,10 @@ export class AutenticidadeCnhComponent implements OnInit {
     }
 
     return erros == 0 ? true : false;
+  }
+
+  executarSpinner(executar: boolean): void{
+    this.isExecutarSpinner = executar;
   }
 
 }
