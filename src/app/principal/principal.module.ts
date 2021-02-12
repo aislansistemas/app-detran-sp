@@ -9,8 +9,7 @@ import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   declarations: [
-    PrincipalComponent,
-    MenuComponent
+    PrincipalComponent
   ],
   imports: [
     CommonModule,

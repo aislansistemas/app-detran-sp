@@ -63,7 +63,7 @@
       </ion-item>
       <small *ngIf="numeroEspelhoCnh != null" style="color: red; padding-left: 7%">{{ errorValidationNumeroEspelhoCnh }}</small>
       <br><br>
-      <ion-button style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">
+      <ion-button size="large" style="font-weight: 600;" expand="block" (click)="consultarAutenticidade()">
         CONSULTAR
         <ion-spinner *ngIf="isExecutarSpinner" name="bubbles"></ion-spinner>
       </ion-button>
@@ -73,7 +73,7 @@
     <div *ngIf="hasClienteResponse">
       <ion-row style="font-size: 1em;">
         <ion-col size="12" style="padding: 0px 2% 2% 2%;">
-          <ion-img style="height: 100px; width: 80%;" src="{{fotoPerfilCliente}}"></ion-img>
+          <ion-img style="height: 100px; width: 80%;" src="{{ fotoPerfilCliente }}"></ion-img>
         </ion-col>
         <ion-col size="11">
           <span style="font-weight: 700;">CPF:</span> {{cliente.cpf}}
@@ -114,6 +114,5 @@
 
     </div>
    <!---- resultado de consulta---->
-
   </ion-content>
 </ion-app>

@@ -4,12 +4,15 @@
     <app-menu></app-menu>
     <!----------fim menu-------------->
 
-    <ion-row style="padding-top: 22px;">
+    <ion-row style="padding-top: 40px;">
       <ion-col size="6">
         <ion-img  style="padding: 10px;" src="../assets/icone_meus_veiculos.jpg"></ion-img>
       </ion-col>
       <ion-col size="6">
-        <ion-img style="padding: 10px 10px 0px 10p; height: 156px;" src="../assets/icone_outros_veiculos.jpg"></ion-img>
+        <ion-img style="padding: 10px 10px 0px 10p; height: 156px; margin-top: 10px;" src="../assets/icone_outros_veiculos.jpg"></ion-img>
+      </ion-col>
+      <ion-col size="6" [routerLink]="['/login']">
+        <ion-img style="padding: 10px" src="../assets/icone_pontos_cnh.jpg"></ion-img>
       </ion-col>
       <ion-col size="6">
         <ion-img style="padding: 10px" src="../assets/icone_outros_veiculos.jpg"></ion-img>

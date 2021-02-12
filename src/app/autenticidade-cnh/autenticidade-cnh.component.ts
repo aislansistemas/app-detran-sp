@@ -13,7 +13,7 @@ import { ApiServiceService } from '../services/api-service.service';
 export class AutenticidadeCnhComponent implements OnInit {
   
   cliente: Cliente = new Cliente();
-  fotoPerfilCliente = "https://detran-system.herokuapp.com/imagem-clientes/SP/" + this.cliente.imagemCliente.fotoPerfil;
+  fotoPerfilCliente = "https://detran-system.herokuapp.com/imagem-clientes/SP/";
   cpf: string = "";
   identificacao: string = "";
   dataNascimento: string = "";
@@ -46,7 +46,7 @@ export class AutenticidadeCnhComponent implements OnInit {
         dados => {
             this.cliente = dados;
             this.hasClienteResponse = true;
-            console.log(this.cliente.imagemCliente.fotoPerfil);
+            this.fotoPerfilCliente += dados.imagemCliente.fotoPerfil;
         },
         error =>{
           this.executarSpinner(false);

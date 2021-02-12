@@ -9,5 +9,6 @@ export class Cliente {
     dataAutorizacaoEmissao: Date;
     fotoPerfil: string;
     clienteEstado: number;
+    codigoAluno: number;
     imagemCliente: ImagemCliente = new ImagemCliente();
 }

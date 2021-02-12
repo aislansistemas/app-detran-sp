@@ -1,0 +1,44 @@
+<ion-app>
+  <ion-header style="height: 8%; font-weight: 600;">
+    <ion-row style="background-color: #3A5FCD; height: 100%; color:white; display: flex; align-items: center;">
+      <ion-col size="1" style="padding-left: 3%;" [routerLink]="['/principal']">
+        <ion-icon style="font-size: 1.2em;" name="arrow-back-sharp"></ion-icon>
+      </ion-col>
+      <ion-col size="11" style="text-align: center; font-size: 1em;">
+        Login
+      </ion-col>
+    </ion-row>
+  </ion-header>
+
+  <ion-content class="ion-padding" style="font-family: Arial, Helvetica, sans-serif;">
+    <ion-row style="margin-bottom: 15px; margin-top: 15px;">
+      <ion-col size="12" style="text-align: center;">
+        <span style="font-weight: 700;">Acesse com seu CPF e senha</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-label style="color: #BEBEBE;" position="floating">Digite seu CPF ou CNPJ:</ion-label>
+      <ion-input [(ngModel)]="cpf" [brmasker]="{mask:'000.000.000-00', len:14, userCaracters: true}"></ion-input>
+    </ion-item>
+    <small style="color: red; padding-left: 7%">{{errorValidationCpf}}</small>
+    
+    <ion-item>
+      <ion-label style="color: #BEBEBE;" position="floating">Digite sua senha:</ion-label>
+      <ion-input [(ngModel)]="codigoAluno" type="password"></ion-input>
+    </ion-item>
+    <small style="color: red; padding-left: 7%">{{errorValidationCodigoAluno}}</small>
+    <br><br>
+    <ion-button (click)="login()" color="tertiary" style="font-weight: 600;" size="large" expand="block">
+      Entrar
+      <ion-spinner *ngIf="isExecutarSpinner" name="bubbles"></ion-spinner>
+    </ion-button>
+  </ion-content>
+  <ion-footer>
+    <ion-row style="background: #000; font-weight: 600">
+      <ion-col size="12" style="padding: 10px 15px 10px 15px;">
+        <p style="color: white; text-align: center;"><u>Caso você não possua cadastro clique aqui</u></p>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</ion-app>

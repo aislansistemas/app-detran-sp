@@ -4,6 +4,8 @@ import { AutenticidadeCnhComponent } from './autenticidade-cnh/autenticidade-cnh
 import { AutenticidadeCnhModule } from './autenticidade-cnh/autenticidade-cnh.module';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 import { PrincipalComponent } from './principal/principal.component';
 import { PrincipalModule } from './principal/principal.module';
 import { TutorialComponent } from './tutorial/tutorial.component';
@@ -25,6 +27,10 @@ const routes: Routes = [
   {
     path: 'autenticidade-cnh',
     component: AutenticidadeCnhComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 @NgModule({
@@ -33,7 +39,8 @@ const routes: Routes = [
     HomeModule,
     TutorialModule,
     PrincipalModule,
-    AutenticidadeCnhModule
+    AutenticidadeCnhModule,
+    LoginModule
   ],
   exports: [RouterModule]
 })
