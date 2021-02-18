@@ -13,7 +13,7 @@ import { ApiServiceService } from '../services/api-service.service';
 export class AutenticidadeCnhComponent implements OnInit {
   
   cliente: Cliente = new Cliente();
-  fotoPerfilCliente = "https://detran-system.herokuapp.com/imagem-clientes/SP/";
+  fotoPerfilCliente: string = "";
   cpf: string = "";
   identificacao: string = "";
   dataNascimento: string = "";

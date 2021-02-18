@@ -72,8 +72,8 @@
     <!----resultado de consulta---->
     <div *ngIf="hasClienteResponse">
       <ion-row style="font-size: 1em;">
-        <ion-col size="12" style="padding: 0px 2% 2% 2%;">
-          <ion-img style="height: 100px; width: 80%;" src="{{ fotoPerfilCliente }}"></ion-img>
+        <ion-col size="12">
+          <ion-img style="height: 340px; width: 340px;" src="data:image/png;base64,{{ fotoPerfilCliente }}"></ion-img>
         </ion-col>
         <ion-col size="11">
           <span style="font-weight: 700;">CPF:</span> {{cliente.cpf}}
